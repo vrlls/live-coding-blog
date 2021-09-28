@@ -1,0 +1,11 @@
+<h1>Post <%= @post.title%></h1>
+<p><%= @post.body %></p>
+<p>Author: <%= @post.author %></p>
+<%= render "comments/form" %>
+<ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.body %> - <%= comment.author %> </li>
+    <span><%= link_to "delete", [@post, comment], method: :delete, data: { confirm: 'Are you sure?' } %></span>
+  <% end %>
+</ul>
+<%= link_to "Back to the posts", posts_path %>
